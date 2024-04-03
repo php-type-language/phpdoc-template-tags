@@ -41,23 +41,27 @@ Adds support for advanced template annotations.
 ## Usage
 
 ```php
-$tags = new \TypeLang\PHPDoc\Tag\Factory\TagFactory();
+use TypeLang\PHPDoc\Parser;
+use TypeLang\PHPDoc\Template;
+use TypeLang\PHPDoc\Tag\Factory\TagFactory;
+
+$tags = new TagFactory();
 
 // Add support of template tags
-$tags->register('template', new TypeLang\PHPDoc\Template\TemplateTagFactory());
-$tags->register('template-covariant', new TypeLang\PHPDoc\Template\TemplateCovariantTagFactory());
-$tags->register('template-contravariant', new TypeLang\PHPDoc\Template\TemplateContravariantTagFactory());
-$tags->register(['extends', 'template-extends'], new TypeLang\PHPDoc\Template\TemplateExtendsTagFactory());
-$tags->register(['implements', 'template-implements'], new TypeLang\PHPDoc\Template\TemplateImplementsTagFactory());
-$tags->register(['use', 'template-use'], new TypeLang\PHPDoc\Template\TemplateUseTagFactory());
+$tags->register('template', new Template\TemplateTagFactory());
+$tags->register('template-covariant', new Template\TemplateCovariantTagFactory());
+$tags->register('template-contravariant', new Template\TemplateContravariantTagFactory());
+$tags->register(['extends', 'template-extends'], new Template\TemplateExtendsTagFactory());
+$tags->register(['implements', 'template-implements'], new Template\TemplateImplementsTagFactory());
+$tags->register(['use', 'template-use'], new Template\TemplateUseTagFactory());
 
-$parser = new TypeLang\PHPDoc\Parser($tags);
-$docblock = $parser->parse(<<<'PHPDOC'
-    /**
-     * @template T of object
-     * @template-extends \Traversable<array-key, T>
-     */
-    PHPDOC);
+$docblock = (new Parser($tags))
+    ->parse(<<<'PHPDOC'
+        /**
+         * @template T of object
+         * @template-extends \Traversable<array-key, T>
+         */
+        PHPDOC);
 
 var_dump($docblock);
 ```
