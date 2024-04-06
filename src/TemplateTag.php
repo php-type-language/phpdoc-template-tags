@@ -40,4 +40,13 @@ class TemplateTag extends Tag implements OptionalTypeProviderInterface
     {
         return $this->templateName;
     }
+
+    public function jsonSerialize(): array
+    {
+        return \array_filter([
+            ...parent::jsonSerialize(),
+            'type' => $this->type,
+            'template' => $this->templateName,
+        ], static fn(mixed $value): bool => $value !== null);
+    }
 }

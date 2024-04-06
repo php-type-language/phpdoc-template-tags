@@ -25,4 +25,12 @@ abstract class TemplateInheritanceTag extends Tag implements TypeProviderInterfa
     {
         return $this->type;
     }
+
+    public function jsonSerialize(): array
+    {
+        return \array_filter([
+            ...parent::jsonSerialize(),
+            'type' => $this->type,
+        ], static fn(mixed $value): bool => $value !== null);
+    }
 }
