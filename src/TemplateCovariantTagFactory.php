@@ -17,7 +17,7 @@ use TypeLang\PHPDoc\Tag\Content;
  */
 final class TemplateCovariantTagFactory implements FactoryInterface
 {
-    private TemplateTagFactory $factory;
+    private readonly TemplateTagFactory $factory;
 
     public function __construct(
         TypesParserInterface $parser = new TypesParser(tolerant: true),
