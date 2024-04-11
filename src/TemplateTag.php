@@ -23,7 +23,7 @@ class TemplateTag extends Tag implements OptionalTypeProviderInterface
         string $name,
         protected readonly string $templateName,
         protected readonly ?TypeStatement $type = null,
-        \Stringable|string|null $description = null
+        \Stringable|string|null $description = null,
     ) {
         parent::__construct($name, $description);
     }
