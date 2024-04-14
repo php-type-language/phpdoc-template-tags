@@ -28,7 +28,7 @@ final class TemplateTagFactory implements FactoryInterface
         $type = null;
 
         $content->transactional(function (Content $content) use (&$type): bool {
-            if ($content->nextOptionalValue('of')) {
+            if ($content->nextOptionalValue('of') !== null) {
                 $type = $content->nextOptionalType($this->parser);
             }
 
@@ -39,7 +39,7 @@ final class TemplateTagFactory implements FactoryInterface
             name: $name,
             templateName: $template,
             type: $type,
-            description: $content->toDescription($descriptions),
+            description: $content->toOptionalDescription($descriptions),
         );
     }
 }

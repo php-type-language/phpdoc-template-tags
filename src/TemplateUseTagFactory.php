@@ -36,7 +36,7 @@ final class TemplateUseTagFactory implements FactoryInterface
         return new TemplateImplementsTag(
             name: $tag->getName(),
             type: $tag->getType(),
-            description: $content->toDescription($descriptions),
+            description: $content->toOptionalDescription($descriptions),
         );
     }
 }
