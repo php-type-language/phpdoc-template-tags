@@ -29,7 +29,7 @@ final class TemplateExtendsTagFactory implements FactoryInterface
         return new TemplateExtendsTag(
             name: $name,
             type: $type,
-            description: $content->toOptionalDescription($descriptions),
+            description: \trim($content->value) === '' ? null : $content->toDescription($descriptions),
         );
     }
 }

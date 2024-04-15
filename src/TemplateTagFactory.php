@@ -39,7 +39,7 @@ final class TemplateTagFactory implements FactoryInterface
             name: $name,
             templateName: $template,
             type: $type,
-            description: $content->toOptionalDescription($descriptions),
+            description: \trim($content->value) === '' ? null : $content->toDescription($descriptions),
         );
     }
 }
