@@ -6,7 +6,9 @@ namespace TypeLang\PHPDoc\Template;
 
 /**
  * ```
+ *
  * * @template-use <Type> [<description>]
+ *
  * * @use <Type> [<description>]
  * ```
  */
