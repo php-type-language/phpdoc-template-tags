@@ -14,6 +14,8 @@
     <a href="https://github.com/php-type-language/phpdoc-template-tags/actions"><img src="https://github.com/php-type-language/phpdoc-template-tags/workflows/tests/badge.svg"></a>
 </p>
 
+> Abandoned: Since version 2.0, this phpdoc tag set is built-in to the [phpdoc package](https://github.com/php-type-language/phpdoc).
+
 Adds support of the PHPDoc standard DocBlock tags.
 
 Read [documentation pages](https://typelang.dev) for more information.
